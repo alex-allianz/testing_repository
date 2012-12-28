@@ -18,7 +18,7 @@
             id="2_col_report"
             menu="True"
             model="wizard.report.inherit"
-            name="afr.2cols"
+            name="afr.2cols.inherit"
             rml="account_financial_report/report/balance_full_2_cols.rml"
             string="Balance 2 Columnas"
             header="False"

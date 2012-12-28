@@ -21,7 +21,7 @@
 ##############################################################################
 {
     'name': 'Account financial report custom',
-    'version': '1.1',
+    'version': '2.0',
     'category': 'Generic Modules/Reporting',
     'description': """ 
         Module to add earnings account in  account financial report module

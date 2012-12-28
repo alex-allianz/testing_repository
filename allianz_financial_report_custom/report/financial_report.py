@@ -42,7 +42,7 @@ class account_balance_inherit(account_balance):
         period_obj = self.pool.get('account.period')
         fiscalyear_obj = self.pool.get('account.fiscalyear')
         self.show_earnings = False
-        if form['show_earning'] and isinstance(form['earning_account'], tuple):
+        if 'earning_account' in form and not isinstance(form['earning_account'], int):
             form['earning_account'] = form['earning_account'][0]
         def _get_children_and_consol(cr, uid, ids, level, context={},change_sign=False):
             aa_obj = self.pool.get('account.account')
@@ -227,17 +227,162 @@ class account_balance_inherit(account_balance):
         res = {}
         result_acc = []
         tot = {}   
-        ############################3
+        ############################For getting the net balance for earning account
         net_balance = 0.0   
         temp_earning = {}  
-        for par_id in selected_accounts:
-            aa_brw_init = account_obj.browse(self.cr, self.uid, par_id, ctx_init)
-            aa_brw_end  = account_obj.browse(self.cr, self.uid, par_id, ctx_end)
-
-            i1,d1,c1 = map(z,[aa_brw_init.balance,aa_brw_end.debit,aa_brw_end.credit])
-            b1 = z(i1+d1-c1)
-            net_balance += b1
-        ################################
+        net_bal_temp = {}
+        if form['columns'] == 'qtr':
+            pn = 1
+            for p_id in p:
+                form['periods'] = p_id
+                #net_bal_temp[pn]={}
+                net_bal_temp[pn]={
+                    'dbr%s'%pn: 0.0,
+                    'cdr%s'%pn: 0.0,
+                    'bal%s'%pn: 0.0}
+                for par_id in selected_accounts:
+                    ctx_init = _ctx_init(self.context.copy())
+                    
+                    aa_brw_init = account_obj.browse(self.cr, self.uid, par_id, ctx_init)
+                    ctx_end = _ctx_end(self.context.copy())
+                    aa_brw_end  = account_obj.browse(self.cr, self.uid, par_id, ctx_end)
+                    net_bal_temp[pn].update({'ctx_init': ctx_init,
+                                            'ctx_end': ctx_end})
+                    if form['inf_type'] == 'IS':
+                        d,c,b = map(z,[aa_brw_end.debit,aa_brw_end.credit,aa_brw_end.balance])
+                        net_bal_temp[pn].update({
+                            'dbr%s'%pn: net_bal_temp[pn]['dbr%s'%pn] + self.exchange(d),
+                            'cdr%s'%pn: net_bal_temp[pn]['cdr%s'%pn] +self.exchange(c),
+                            'bal%s'%pn: net_bal_temp[pn]['bal%s'%pn] +self.exchange(b),
+                        })
+                    else:
+                        i,d,c = map(z,[aa_brw_init.balance,aa_brw_end.debit,aa_brw_end.credit])
+                        b = z(i+d-c)
+                        net_bal_temp[pn].update({
+                            'dbr%s'%pn: net_bal_temp[pn]['dbr%s'%pn] + self.exchange(d),
+                            'cdr%s'%pn: net_bal_temp[pn]['cdr%s'%pn] +self.exchange(c),
+                            'bal%s'%pn: net_bal_temp[pn]['bal%s'%pn] +self.exchange(b),
+                        })
+                pn +=1
+            form['periods'] = period_ids
+            net_bal_temp[5]={
+                    'dbr%s'%pn: 0.0,
+                    'cdr%s'%pn: 0.0,
+                    'bal%s'%pn: 0.0}
+            for par_id in selected_accounts:
+                ctx_init = _ctx_init(self.context.copy())
+                aa_brw_init = account_obj.browse(self.cr, self.uid, par_id, ctx_init)
+                ctx_end = _ctx_end(self.context.copy())
+                aa_brw_end  = account_obj.browse(self.cr, self.uid, par_id, ctx_end)
+                net_bal_temp[5].update({'ctx_init': ctx_init,
+                                        'ctx_end': ctx_end})
+                if form['inf_type'] == 'IS':
+                    d,c,b = map(z,[aa_brw_end.debit,aa_brw_end.credit,aa_brw_end.balance])
+                    net_bal_temp[5].update({
+                        'dbr5': net_bal_temp[pn]['dbr5'] + self.exchange(d),
+                        'cdr5': net_bal_temp[pn]['cdr5'] + self.exchange(c),
+                        'bal5': net_bal_temp[pn]['bal5'] + self.exchange(b),
+                    })
+                else:
+                    i,d,c = map(z,[aa_brw_init.balance,aa_brw_end.debit,aa_brw_end.credit])
+                    b = z(i+d-c)
+                    net_bal_temp[5].update({
+                        'dbr5': net_bal_temp[pn]['dbr5'] + self.exchange(d),
+                        'cdr5': net_bal_temp[pn]['cdr5'] + self.exchange(c),
+                        'bal5': net_bal_temp[pn]['bal5'] + self.exchange(b),
+                    })
+        elif form['columns'] == 'thirteen':
+            pn = 1
+            for p_id in period_ids:
+                form['periods'] = [p_id]
+                net_bal_temp[pn]={
+                    'dbr%s'%pn: 0.0,
+                    'cdr%s'%pn: 0.0,
+                    'bal%s'%pn: 0.0}
+                for par_id in selected_accounts:
+                    ctx_init = _ctx_init(self.context.copy())
+                    aa_brw_init = account_obj.browse(self.cr, self.uid, par_id, ctx_init)
+                    ctx_end = _ctx_end(self.context.copy())
+                    aa_brw_end  = account_obj.browse(self.cr, self.uid, par_id, ctx_end)
+                    net_bal_temp[pn].update({'ctx_init': ctx_init,
+                                            'ctx_end': ctx_end})
+                    if form['inf_type'] == 'IS':
+                        d,c,b = map(z,[aa_brw_end.debit,aa_brw_end.credit,aa_brw_end.balance])
+                        net_bal_temp[pn].update({
+                            'dbr%s'%pn: net_bal_temp[pn]['dbr%s'%pn] + self.exchange(d),
+                            'cdr%s'%pn: net_bal_temp[pn]['cdr%s'%pn] +self.exchange(c),
+                            'bal%s'%pn: net_bal_temp[pn]['bal%s'%pn] +self.exchange(b),
+                        })
+                    else:
+                        i,d,c = map(z,[aa_brw_init.balance,aa_brw_end.debit,aa_brw_end.credit])
+                        b = z(i+d-c)
+                        net_bal_temp[pn].update({
+                            'dbr%s'%pn: net_bal_temp[pn]['dbr%s'%pn] + self.exchange(d),
+                            'cdr%s'%pn: net_bal_temp[pn]['cdr%s'%pn] +self.exchange(c),
+                            'bal%s'%pn: net_bal_temp[pn]['bal%s'%pn] +self.exchange(b),
+                        })
+                pn +=1
+            form['periods'] = period_ids
+            net_bal_temp[13]={
+                    'dbr%s'%pn: 0.0,
+                    'cdr%s'%pn: 0.0,
+                    'bal%s'%pn: 0.0}
+            for par_id in selected_accounts:        
+                ctx_init = _ctx_init(self.context.copy())
+                aa_brw_init = account_obj.browse(self.cr, self.uid, par_id, ctx_init)
+                
+                ctx_end = _ctx_end(self.context.copy())
+                aa_brw_end  = account_obj.browse(self.cr, self.uid, par_id, ctx_end)
+                net_bal_temp[13].update({'ctx_init': ctx_init,
+                                        'ctx_end': ctx_end})
+                if form['inf_type'] == 'IS':
+                    d,c,b = map(z,[aa_brw_end.debit,aa_brw_end.credit,aa_brw_end.balance])
+                    net_bal_temp[13].update({
+                            'dbr13': net_bal_temp[pn]['dbr13'] + self.exchange(d),
+                            'cdr13': net_bal_temp[pn]['cdr13'] + self.exchange(c),
+                            'bal13': net_bal_temp[pn]['bal13'] + self.exchange(b),
+                        })
+                else:
+                    i,d,c = map(z,[aa_brw_init.balance,aa_brw_end.debit,aa_brw_end.credit])
+                    b = z(i+d-c)
+                    net_bal_temp[13].update({
+                            'dbr13': net_bal_temp[pn]['dbr13'] + self.exchange(d),
+                            'cdr13': net_bal_temp[pn]['cdr13'] + self.exchange(c),
+                            'bal13': net_bal_temp[pn]['bal13'] + self.exchange(b),
+                        })
+        else:
+            net_bal_temp[0]={
+                    'ctx_init': ctx_init,
+                    'ctx_end': ctx_end,
+                    'balanceinit': 0.0,
+                    'debit': 0.0,
+                    'credit': 0.0,
+                    'ytd': 0.0,
+                    'balance':0.0
+                }
+            for par_id in selected_accounts:
+                
+                aa_brw_init = account_obj.browse(self.cr, self.uid, par_id, ctx_init)
+                aa_brw_end  = account_obj.browse(self.cr, self.uid, par_id, ctx_end)
+                
+                i,d,c = map(z,[aa_brw_init.balance,aa_brw_end.debit,aa_brw_end.credit])
+                b = z(i+d-c)
+                net_bal_temp[0].update({
+                    'balanceinit': self.exchange(i) + net_bal_temp[0]['balanceinit'],
+                    'debit': self.exchange(d) + net_bal_temp[0]['debit'],
+                    'credit': self.exchange(c) + net_bal_temp[0]['credit'],
+                    'ytd': self.exchange(d-c) + net_bal_temp[0]['ytd'],
+                    'balance':self.exchange(b) + net_bal_temp[0]['balance'],
+                })
+                
+#        for par_id in selected_accounts:
+#            aa_brw_init = account_obj.browse(self.cr, self.uid, par_id, ctx_init)
+#            aa_brw_end  = account_obj.browse(self.cr, self.uid, par_id, ctx_end)
+#
+#            i1,d1,c1 = map(z,[aa_brw_init.balance,aa_brw_end.debit,aa_brw_end.credit])
+#            b1 = z(i1+d1-c1)
+#            net_balance += b1
+        ################################net calculation ends
         for aa_id in account_ids:
             id = aa_id[0]
 
@@ -256,8 +401,6 @@ class account_balance_inherit(account_balance):
                 'total'     : aa_id[2],
                 'change_sign' : credit_account_ids and (id  in credit_account_ids and -1 or 1) or 1
                 }
-                print res,'\n\n\n'
-                
                 if form['columns'] == 'qtr':
                     pn = 1
                     for p_id in p:
@@ -279,12 +422,32 @@ class account_balance_inherit(account_balance):
                         else:
                             i,d,c = map(z,[aa_brw_init.balance,aa_brw_end.debit,aa_brw_end.credit])
                             b = z(i+d-c)
-                            res.update({
-                                'dbr%s'%pn: self.exchange(d),
-                                'cdr%s'%pn: self.exchange(c),
-                                'bal%s'%pn: self.exchange(b),
-                            })
-                            
+                            #For finding the earnings account
+                            if form['show_earning'] and form['earning_account'] == id:
+                                self.show_earnings = True
+                                #parent_account = account_obj.browse(self.cr, self.uid, id)
+                                res.update({
+                                    'dbr%s'%pn: self.exchange(net_bal_temp[pn]['dbr%s'%pn]) + \
+                                            3*self.exchange(d),
+                                    'cdr%s'%pn: self.exchange(net_bal_temp[pn]['cdr%s'%pn]) + \
+                                            3*self.exchange(c),
+                                    'bal%s'%pn: self.exchange(net_bal_temp[pn]['bal%s'%pn]) + \
+                                            2*self.exchange(d - c) + self.exchange(b),
+                                })
+                                temp_earning.update({
+                                    'earning%s'%pn: self.exchange(b),
+                                    'dbr%s_diff'%pn: res['dbr%s'%pn] - self.exchange(d),
+                                    'cdr%s_diff'%pn: res['cdr%s'%pn] - self.exchange(c),
+                                    'net%s_bal'%pn: res['bal%s'%pn],
+                                    'bal%s_diff'%pn: res['bal%s'%pn] - self.exchange(b),
+                                    'parent_id': aa_brw_init.parent_id and aa_brw_init.parent_id.id or False,
+                                })
+                            else:
+                                res.update({
+                                    'dbr%s'%pn: self.exchange(d),
+                                    'cdr%s'%pn: self.exchange(c),
+                                    'bal%s'%pn: self.exchange(b),
+                                })
                         pn +=1
             
                     form['periods'] = period_ids
@@ -305,11 +468,33 @@ class account_balance_inherit(account_balance):
                     else:
                         i,d,c = map(z,[aa_brw_init.balance,aa_brw_end.debit,aa_brw_end.credit])
                         b = z(i+d-c)
-                        res.update({
-                            'dbr5': self.exchange(d),
-                            'cdr5': self.exchange(c),
-                            'bal5': self.exchange(b),
-                        })
+                        #For finding the earnings account
+                        if form['show_earning'] and form['earning_account'] == id:
+                            self.show_earnings = True
+                            #parent_account = account_obj.browse(self.cr, self.uid, id)
+                            res.update({
+                                'dbr5': self.exchange(net_bal_temp[5]['dbr5']) + \
+                                        3*self.exchange(d),
+                                'cdr5': self.exchange(net_bal_temp[5]['cdr5']) + \
+                                        3*self.exchange(c),
+                                'bal5': self.exchange(net_bal_temp[5]['bal5']) + \
+                                        2*self.exchange(d - c) + self.exchange(b),
+                            })
+                            temp_earning.update({
+                                'earning5': self.exchange(b),
+                                'dbr5_diff': res['dbr5'] - self.exchange(d),
+                                'cdr5_diff': res['cdr5'] - self.exchange(c),
+                                'net5_bal': res['bal5'],
+                                'bal5_diff': res['bal5'] - self.exchange(b),
+                                'parent_id': aa_brw_init.parent_id and aa_brw_init.parent_id.id or False,
+                            })
+                        else:
+                            res.update({
+                                'dbr5': self.exchange(d),
+                                'cdr5': self.exchange(c),
+                                'bal5': self.exchange(b),
+                            })
+                        
                 
                 elif form['columns'] == 'thirteen':
                     pn = 1
@@ -332,12 +517,32 @@ class account_balance_inherit(account_balance):
                         else:
                             i,d,c = map(z,[aa_brw_init.balance,aa_brw_end.debit,aa_brw_end.credit])
                             b = z(i+d-c)
-                            res.update({
-                                'dbr%s'%pn: self.exchange(d),
-                                'cdr%s'%pn: self.exchange(c),
-                                'bal%s'%pn: self.exchange(b),
-                            })
-                            
+                            #For finding the earnings account
+                            if form['show_earning'] and form['earning_account'] == id:
+                                self.show_earnings = True
+                                #parent_account = account_obj.browse(self.cr, self.uid, id)
+                                res.update({
+                                    'dbr%s'%pn: self.exchange(net_bal_temp[pn]['dbr%s'%pn]) + \
+                                            3*self.exchange(d),
+                                    'cdr%s'%pn: self.exchange(net_bal_temp[pn]['cdr%s'%pn]) + \
+                                            3*self.exchange(c),
+                                    'bal%s'%pn: self.exchange(net_bal_temp[pn]['bal%s'%pn]) + \
+                                            2*self.exchange(d - c) + self.exchange(b),
+                                })
+                                temp_earning.update({
+                                    'earning%s'%pn: self.exchange(b),
+                                    'dbr%s_diff'%pn: res['dbr%s'%pn] - self.exchange(d),
+                                    'cdr%s_diff'%pn: res['cdr%s'%pn] - self.exchange(c),
+                                    'net%s_bal'%pn: res['bal%s'%pn],
+                                    'bal%s_diff'%pn: res['bal%s'%pn] - self.exchange(b),
+                                    'parent_id': aa_brw_init.parent_id and aa_brw_init.parent_id.id or False,
+                                })
+                            else:
+                                res.update({
+                                    'dbr%s'%pn: self.exchange(d),
+                                    'cdr%s'%pn: self.exchange(c),
+                                    'bal%s'%pn: self.exchange(b),
+                                })                           
                         pn +=1
             
                     form['periods'] = period_ids
@@ -358,11 +563,32 @@ class account_balance_inherit(account_balance):
                     else:
                         i,d,c = map(z,[aa_brw_init.balance,aa_brw_end.debit,aa_brw_end.credit])
                         b = z(i+d-c)
-                        res.update({
-                            'dbr13': self.exchange(d),
-                            'cdr13': self.exchange(c),
-                            'bal13': self.exchange(b),
-                        })
+                        #For finding the earnings account
+                        if form['show_earning'] and form['earning_account'] == id:
+                            self.show_earnings = True
+                            #parent_account = account_obj.browse(self.cr, self.uid, id)
+                            res.update({
+                                'dbr13': self.exchange(net_bal_temp[13]['dbr13']) + \
+                                        3*self.exchange(d),
+                                'cdr13': self.exchange(net_bal_temp[13]['cdr13']) + \
+                                        3*self.exchange(c),
+                                'bal13': self.exchange(net_bal_temp[13]['bal13']) + \
+                                        2*self.exchange(d - c) + self.exchange(b),
+                            })
+                            temp_earning.update({
+                                'earning13': self.exchange(b),
+                                'dbr13_diff': res['dbr13'] - self.exchange(d),
+                                'cdr13_diff': res['cdr13'] - self.exchange(c),
+                                'net13_bal': res['bal13'],
+                                'bal13_diff': res['bal13'] - self.exchange(b),
+                                'parent_id': aa_brw_init.parent_id and aa_brw_init.parent_id.id or False,
+                            })
+                        else:
+                            res.update({
+                                'dbr13': self.exchange(d),
+                                'cdr13': self.exchange(c),
+                                'bal13': self.exchange(b),
+                            })
                 
                 else:
 
@@ -377,45 +603,56 @@ class account_balance_inherit(account_balance):
                         'credit': self.exchange(c),
                         'ytd': self.exchange(d-c),
                     })
-                
+                    
                     if form['inf_type'] == 'IS' and form['columns'] == 'one':
                         res.update({
                             'balance': self.exchange(d-c),
                         })
-                    elif form['inf_type'] == 'BS' and form['columns'] == 'one' and form['show_earning']:
-                        if form['earning_account'] == id:
-                            self.show_earnings = True
-                            parent_account = account_obj.browse(self.cr, self.uid, id)
-                            
-                            net_earning_balance = self.exchange(net_balance) + \
-                                 2*self.exchange((aa_brw_end.debit - aa_brw_end.credit)) + self.exchange(b)
-                            res.update({
-                                'balance': net_earning_balance,
-                            })
-                            temp_earning.update({(form['inf_type'],form['columns']): {
-                                'earning': self.exchange(b),
-                                'net': net_earning_balance,
-                                'diff': net_earning_balance - self.exchange(b),
-                                'parent_id': parent_account.parent_id and parent_account.parent_id.id or False,
-                                }
-                            })
-                        else:
-                            
-#                            earning_res = {
-#                                'id'        : id,
-#                                'type'      : aa_id[3].type,
-#                                'code'      : aa_id[3].code,
-#                                'name'      : (aa_id[2] and not aa_id[1]) and 'TOTAL %s'%(aa_id[3].name.upper()) or aa_id[3].name,
-#                                'parent_id' : aa_id[3].parent_id and aa_id[3].parent_id.id,
-#                                'level'     : aa_id[3].level,
-#                                'label'     : aa_id[1],
-#                                'total'     : aa_id[2],
-#                                'change_sign' : credit_account_ids and (id  in credit_account_ids and -1 or 1) or 1
+#                    elif form['inf_type'] == 'BS' and form['columns'] == 'one' and form['show_earning']:
+#                        if form['earning_account'] == id:
+#                            self.show_earnings = True
+#                            parent_account = account_obj.browse(self.cr, self.uid, id)
+#                            
+#                            net_earning_balance = self.exchange(net_balance) + \
+#                                 2*self.exchange((aa_brw_end.debit - aa_brw_end.credit)) + self.exchange(b)
+#                            res.update({
+#                                'balance': net_earning_balance,
+#                            })
+#                            temp_earning.update({(form['inf_type'],form['columns']): {
+#                                'earning': self.exchange(b),
+#                                'net': net_earning_balance,
+#                                'diff': net_earning_balance - self.exchange(b),
+#                                'parent_id': parent_account.parent_id and parent_account.parent_id.id or False,
 #                                }
-                        
-                            res.update({
-                                'balance': self.exchange(b),
-                            })
+#                            })
+#                        else:                        
+#                            res.update({
+#                                'balance': self.exchange(b),
+#                            })
+                    elif form['inf_type'] == 'BS' and form['show_earning'] and form['earning_account'] == id:
+                        self.show_earnings = True
+                        res.update({
+                            'balanceinit': self.exchange(net_bal_temp[0]['balanceinit']) + \
+                                        3 * self.exchange(i),
+                            'debit': self.exchange(net_bal_temp[0]['debit']) + \
+                                        3 * self.exchange(d),
+                            'credit': self.exchange(net_bal_temp[0]['credit']) + \
+                                        3 * self.exchange(c),
+                            'ytd': self.exchange(net_bal_temp[0]['ytd']) + \
+                                        3 * self.exchange(d-c),
+                            'balance': self.exchange(net_bal_temp[0]['balance']) + \
+                                        2*self.exchange((d - c)) + self.exchange(b)
+                        })
+                        temp_earning.update({
+                                'earning': self.exchange(b),
+                                'bal_init_diff': res['balanceinit'] - self.exchange(i),
+                                'dbr_diff': res['debit'] - self.exchange(d),
+                                'cdr_diff': res['credit'] - self.exchange(c),
+                                'ytd_diff':  res['ytd'] - self.exchange(d-c),
+                                'net_bal': res['balance'],
+                                'bal_diff': res['balance'] - self.exchange(b),
+                                'parent_id': aa_brw_init.parent_id and aa_brw_init.parent_id.id or False,
+                        })
                     else:
                         res.update({
                             'balance': self.exchange(b),
@@ -565,37 +802,95 @@ class account_balance_inherit(account_balance):
                 })
                 
             result_acc.append(res2)
-            
-        if form['show_earning']:
-            if form['inf_type'] == 'BS' and form['columns'] == 'one':
-                if not self.show_earnings:
-                    earning_obj = account_obj.browse(self.cr, self.uid,form['earning_account'] )
-                    res = {
-                        'id'        : id,
-                        'type'      : 'view',
-                        'code'      : earning_obj.code,
-                        'name'      : earning_obj.name,
-                        'parent_id' : earning_obj.parent_id and earning_obj.parent_id.id,
-                        'level'     : earning_obj.level,
-                        'label'     : False,
-                        'total'     : True,
-                        'change_sign' : 1}
-                    if form['columns'] not in ('qtr','thirteen'):
-                        res.update({
-                        
-                        'balance':self.exchange(net_balance),
-                        })
+        if  form['inf_type'] == 'BS' and form['show_earning']:
+            if not self.show_earnings:
+                earning_obj = account_obj.browse(self.cr, self.uid, form['earning_account'])
+                res = {
+                    'id'        : earning_obj.id,
+                    'type'      : 'view',
+                    'code'      : earning_obj.code,
+                    'name'      : earning_obj.name,
+                    'parent_id' : earning_obj.parent_id and earning_obj.parent_id.id,
+                    'level'     : earning_obj.level,
+                    'label'     : False,
+                    'total'     : True,
+                    'change_sign' : 1
+                }
+                if form['columns'] in ('qtr','thirteen'):
+                    if form['columns'] =='qtr':
+                        pn = 5
+                    else:
+                        pn = 13
+                    while pn > 0:    
+                        res.update(net_bal_temp[pn])
+                        pn -= 1
                     result_acc.append(res)
-                    return result_acc
-                has_parent =  temp_earning[(form['inf_type'],form['columns'])]['parent_id'] or False
-                while has_parent:
-                    res_index_list = [(i,d) for i,d in enumerate(result_acc) if d['id'] == has_parent]
-                    parent = False
-                    for index in res_index_list:
-                        result_acc[index[0]]['balance']=result_acc[index[0]]['balance'] + temp_earning[(form['inf_type'],form['columns'])]['diff']
-                        parent = result_acc[index[0]]['parent_id']
-                    has_parent = parent or False
-        
+                else:
+                    res.update(net_bal_temp[0])
+                    result_acc.append(res)
+            else:
+                if form['columns'] in ('qtr','thirteen'):
+                    has_parent = temp_earning['parent_id'] or False
+                    while has_parent:
+                        res_index_list = [(i,d) for i,d in enumerate(result_acc) if d['id'] == has_parent]
+                        parent = False
+                        for index in res_index_list:
+                            if form['columns'] =='qtr':
+                                pn = 5
+                            else:
+                                pn = 13
+                            while pn > 0:
+                                result_acc[index[0]].update({
+                                    'dbr%s'%pn: result_acc[index[0]]['dbr%s'%pn] + temp_earning['dbr%s_diff'%pn],
+                                    'cdr%s'%pn: result_acc[index[0]]['cdr%s'%pn] + temp_earning['cdr%s_diff'%pn],
+                                    'bal%s'%pn: result_acc[index[0]]['bal%s'%pn] + temp_earning['bal%s_diff'%pn],
+                                })
+                                pn -= 1
+                            parent = result_acc[index[0]]['parent_id']
+                        has_parent = parent or False
+                else:
+                    has_parent = temp_earning['parent_id'] or False
+                    while has_parent:
+                        res_index_list = [(i,d) for i,d in enumerate(result_acc) if d['id'] == has_parent]
+                        parent = False
+                        for index in res_index_list:
+                            result_acc[index[0]].update({
+                                'balanceinit': result_acc[index[0]]['balanceinit'] + temp_earning['bal_init_diff'],
+                                'debit': result_acc[index[0]]['debit'] + temp_earning['dbr_diff'],
+                                'credit': result_acc[index[0]]['credit'] + temp_earning['cdr_diff'],
+                                'ytd': result_acc[index[0]]['ytd'] + temp_earning['ytd_diff'],
+                                'balance': result_acc[index[0]]['balance'] + temp_earning['bal_diff'],
+                            })
+                            parent = result_acc[index[0]]['parent_id']
+                        has_parent = parent or False
+#        if form['show_earning']:
+#            if form['inf_type'] == 'BS' and form['columns'] == 'one':
+#                if not self.show_earnings:
+#                    earning_obj = account_obj.browse(self.cr, self.uid,form['earning_account'] )
+#                    res = {
+#                        'id'        : id,
+#                        'type'      : 'view',
+#                        'code'      : earning_obj.code,
+#                        'name'      : earning_obj.name,
+#                        'parent_id' : earning_obj.parent_id and earning_obj.parent_id.id,
+#                        'level'     : earning_obj.level,
+#                        'label'     : False,
+#                        'total'     : True,
+#                        'change_sign' : 1}
+#                    if form['columns'] not in ('qtr','thirteen'):
+#                        res.update({
+#                        'balance':self.exchange(net_balance),
+#                        })
+#                    result_acc.append(res)
+#                    return result_acc
+#                has_parent =  temp_earning[(form['inf_type'],form['columns'])]['parent_id'] or False
+#                while has_parent:
+#                    res_index_list = [(i,d) for i,d in enumerate(result_acc) if d['id'] == has_parent]
+#                    parent = False
+#                    for index in res_index_list:
+#                        result_acc[index[0]]['balance']=result_acc[index[0]]['balance'] + temp_earning[(form['inf_type'],form['columns'])]['diff']
+#                        parent = result_acc[index[0]]['parent_id']
+#                    has_parent = parent or False
         return result_acc
     
 report_sxw.report_sxw('report.afr.1cols.inherit', 
