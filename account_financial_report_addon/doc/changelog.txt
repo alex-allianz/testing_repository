@@ -1,0 +1,12 @@
+==================================================================================
+ Version ChangeLog (account_financial_report_addon)
+==================================================================================
+4.0 --> 2 January 2013 : Allianz Technology
+        * Changed name of module
+        * Changed labels of show_earning and earning_account fields in 
+          financial_report_wizard.py
+        * Changed code in financial_report.py to displayed the Total tiles of view accounts 
+          in lower-case letters in reports
+
+        
+        
