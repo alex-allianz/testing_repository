@@ -1,9 +1,7 @@
 # -*- encoding: utf-8 -*-
 ##############################################################################
 #
-#    Copyright (c) 2012 ZestyBeanz Technologies Pvt. Ltd.
-#    (http://wwww.zbeanztech.com)
-#    contact@zbeanztech.com
+#    Copyright (c) 2012 Allianz Technology, A subsidiary of SAT Group, Inc.
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
@@ -24,8 +22,8 @@ from osv import osv, fields
 class wizard_report(osv.osv_memory):
     _inherit = "wizard.report"
     _columns = {
-        'show_earning': fields.boolean('Show Earnings Account'),
-        'earning_account': fields.many2one('account.account', 'Earnings Account')
+        'show_earning': fields.boolean('Is this a Balance Sheet?'),
+        'earning_account': fields.many2one('account.account', 'Retained Earnings Acct.')
     }
     _defaults = {
         'show_earning': False

@@ -1,9 +1,7 @@
 # -*- encoding: utf-8 -*-
 ##############################################################################
 #
-#    Copyright (c) 2012 ZestyBeanz Technologies Pvt. Ltd.
-#    (http://wwww.zbeanztech.com)
-#    contact@zbeanztech.com
+#    Copyright (c) 2012 Allianz Technology, A subsidiary of SAT Group, Inc.
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
