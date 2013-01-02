@@ -1,9 +1,7 @@
 # -*- encoding: utf-8 -*-
 ##############################################################################
 #
-#    Copyright (c) 2012 ZestyBeanz Technologies Pvt. Ltd.
-#    (http://wwww.zbeanztech.com)
-#    contact@zbeanztech.com
+#    Copyright (c) 2012 Allianz Technology, A subsidiary of SAT Group, Inc.
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
@@ -461,7 +459,7 @@ class account_balance_inherit(account_balance):
                 'id'        : id,
                 'type'      : aa_id[3].type,
                 'code'      : aa_id[3].code,
-                'name'      : (aa_id[2] and not aa_id[1]) and 'TOTAL %s'%(aa_id[3].name.upper()) or aa_id[3].name,
+                'name'      : (aa_id[2] and not aa_id[1]) and 'Total %s'%(aa_id[3].name) or aa_id[3].name,
                 'parent_id' : aa_id[3].parent_id and aa_id[3].parent_id.id,
                 'level'     : aa_id[3].level,
                 'label'     : aa_id[1],
@@ -813,7 +811,7 @@ class account_balance_inherit(account_balance):
             str_label = form['lab_str']
             res2 = {
                     'type' : 'view',
-                    'name': 'TOTAL %s'%(str_label),
+                    'name': (str_label),
                     'label': False,
                     'total': True,
             }
