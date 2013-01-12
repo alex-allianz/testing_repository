@@ -257,7 +257,7 @@
               <td>
               </td>
               <td>
-                <para style="P9">[[ voucher.journal_id.use_preprint_check and voucher.chk_seq or '' ]]</para>
+                <para style="P9">[[ voucher.journal_id and voucher.journal_id. internal_sequence_id and voucher.journal_id. internal_sequence_id.number_next or formatLang(voucher.date , date=True) or ''  ]]</para>
               </td>
             </tr>          
             <tr>

@@ -19,12 +19,12 @@
 #
 ##############################################################################
 {
-    "name" : "Check writing",
-    "version" : "1.1",
+    "name" : "Check Writing",
+    "version" : "1.2",
     "author" : "OpenERP SA, NovaPoint Group",
     "category": "Generic Modules/Accounting",
     "description": """
-    Module for the Check writing and check printing  
+    This module allows OpenERP to write and print checks. Do not forget to click on the "Allow Check writing" check box of those journals whose type is "Bank and Cheques." This will activate the "Print Check" button in the Supplier Pay Invoice screen.
     """,
     'website': 'http://www.openerp.com',
     'init_xml': [],
@@ -44,6 +44,5 @@
     ],
     'installable': True,
     'active': False,
-    'certificate': '00166267172349',
 }
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
