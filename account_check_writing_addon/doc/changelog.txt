@@ -1,0 +1,8 @@
+==================================================================================
+ Version ChangeLog (account_check_writing_addon)
+==================================================================================
+1.0 --> 11 January 2013 : Allianz Technology
+	- Removes the words "euro" from the amount_to_text field of the Pay Invoice screen and check itself
+	- In addition, it now pulls the content of the "Free Reference" field of the Supplier Invoice.
+        
+        
