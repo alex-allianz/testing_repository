@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+    <report id="account_print_check_top_inherit"
+            string="Print Check (Top)"
+            model="account.voucher"
+            name="account.print.check.top.inherit"
+            rml="account_check_writing/report/check_print_top.rml"
+            multi="True"
+            auto="False"/>
+
+    <report id="account_print_check_middle_inherit"
+            string="Print Check (Middle)"
+            model="account.voucher"
+            name="account.print.check.middle.inherit"
+            rml="account_check_writing/report/check_print_middle.rml"
+            multi="True"
+            auto="False"/>
+            
+    <report id="account_print_check_bottom_inherit"
+            string="Print Check (Bottom)"
+            model="account.voucher"
+            name="account.print.check.bottom.inherit"
+            rml="account_check_writing/report/check_print_bottom.rml"
+            multi="True"
+            auto="False"/>
+            
+     </data>
+</openerp>
