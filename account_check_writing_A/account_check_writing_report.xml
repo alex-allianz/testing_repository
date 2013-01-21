@@ -9,7 +9,7 @@
             multi="True"
             auto="False"/>
 
-    <report id="account_print_check_middlet"
+    <report id="account_print_check_middle"
             string="Print Check (Middle)"
             model="account.voucher"
             name="account.print.check.middle1"
