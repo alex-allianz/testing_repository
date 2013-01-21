@@ -31,6 +31,7 @@
                    'account_check_writing_report.xml',
                    'account_voucher_view.xml',
                    'res_currency_view.xml',
+                   'account_invoice_view.xml',
                    ],
     'demo_xml': [],
     'test': [],
