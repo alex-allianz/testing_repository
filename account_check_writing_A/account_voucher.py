@@ -86,11 +86,11 @@ class account_voucher(osv.osv):
         res = super(account_voucher, self).print_check(cr, uid, ids, context=context)
         if res.get('report_name', False):
             if res['report_name'] == 'account.print.check.top':
-                res['report_name'] = 'account.print.check.top.inherit'
+                res['report_name'] = 'account.print.check.top1'
             elif res['report_name'] == 'account.print.check.middle':
-                res['report_name'] = 'account.print.check.middle.inherit'
+                res['report_name'] = 'account.print.check.middle1'
             elif res['report_name'] == 'account.print.check.bottom':
-                res['report_name'] = 'account.print.check.bottom.inherit'
+                res['report_name'] = 'account.print.check.bottom1'
         return res
     
 account_voucher()
