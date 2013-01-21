@@ -18,7 +18,7 @@
 #
 ##############################################################################
 {
-    'name': 'Customization A for Check Writing Module',
+    'name': 'Add-on for Check Writing Module',
     'version': '1.0',
     'category': 'Accounting',
     'description': """This extension module removes the words "euro" from the amount_to_text field of the Pay Invoice screen and check itself. In addition, it now pulls the content of the "Free Reference" field of the Supplier Invoice. The "Free Reference" Field is the optimal place to record the External Invoice # of the supplier invoices you wish to include in your OpenERP instance.
