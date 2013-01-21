@@ -20,6 +20,7 @@
 
 import time
 from report import report_sxw
+from tools import amount_to_text_en
 
 
 class report_print_check_inherit(report_sxw.rml_parse):
@@ -58,6 +59,7 @@ class report_print_check_inherit(report_sxw.rml_parse):
         result = []
         self.number_lines = len(voucher_lines)
         for i in range(0, min(10, self.number_lines)):
+            if not voucher_lines[i].amount: continue
             if i < self.number_lines:
                 res = {
                        'date_due': voucher_lines[i].date_due,
