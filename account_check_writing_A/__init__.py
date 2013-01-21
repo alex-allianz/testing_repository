@@ -22,6 +22,7 @@ import purchase
 import account_voucher
 import stock
 import res_currency
+import invoice
 import report
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
