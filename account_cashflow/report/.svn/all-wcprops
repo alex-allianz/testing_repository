@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/account_cashflow/!svn/ver/1/account_cashflow/report
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/account_cashflow/!svn/ver/1/account_cashflow/report/__init__.py
+END
+account_cashflow.py
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/account_cashflow/!svn/ver/1/account_cashflow/report/account_cashflow.py
+END
+account_cashflow.rml
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/account_cashflow/!svn/ver/1/account_cashflow/report/account_cashflow.rml
+END

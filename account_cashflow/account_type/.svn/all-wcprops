@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/account_cashflow/!svn/ver/1/account_type
+END
+account_type.py
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/account_cashflow/!svn/ver/1/account_type/account_type.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/account_cashflow/!svn/ver/1/account_type/__init__.py
+END
+account_type_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/account_cashflow/!svn/ver/1/account_type/account_type_view.xml
+END
+__openerp__.py
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/account_cashflow/!svn/ver/1/account_type/__openerp__.py
+END

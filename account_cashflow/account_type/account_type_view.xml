@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+		<record model="ir.ui.view" id="account_account_type_form_inherit1">
+	        <field name="name">account.account.type.form.inherit1</field>
+	        <field name="model">account.account.type</field>
+	        <field name="type">form</field>
+	        <field name="inherit_id" ref="account.view_account_type_form"/>
+	        <field name="arch" type="xml">
+				<field name="code" select="1" position="replace">
+					<field name="code1" required="1"/>
+				</field>
+			</field>
+		</record>
+	
+	   	<record model="ir.ui.view" id="account_account_type_tree_inherit">
+	        <field name="name">account.account.type.tree.inherit2</field>
+	        <field name="model">account.account.type</field>
+	        <field name="type">tree</field>
+	        <field name="inherit_id" ref="account.view_account_type_tree"/>
+	        <field name="arch" type="xml">
+				<field name="code" position="replace">
+					<field name="code1"/>
+				</field>
+			</field>
+		</record>
+
+	</data>
+</openerp>

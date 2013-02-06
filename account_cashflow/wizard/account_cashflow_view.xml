@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+     <data>
+
+        <record id="account_cashflow_report_view" model="ir.ui.view">
+            <field name="name">Account Cash Flow</field>
+            <field name="model">account.cashflow.report</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="account.account_common_report_view" />
+            <field name="arch" type="xml">
+            <data>
+            <xpath expr="//field[@name='chart_account_id']" position="replace">
+                <field name="chart_account_id"/>
+            </xpath>
+            <xpath expr="//field[@name='journal_ids']" position="replace">
+                <field name="journal_ids" colspan="4" nolabel="1" required="0" readonly="1"/>
+            </xpath>
+            <xpath expr="/form/label[@string='']" position="replace">
+                <separator string="Cash Flow" colspan="4"/>
+                <label nolabel="1" colspan="4" string="This report allows you to print or generate a pdf about company's cash receipts and cash payment during an accounting period"/>
+            </xpath>
+            <xpath expr="//field[@name='target_move']" position="replace"/>
+            <!-- for the moment - just want simple report -->
+            <page string="Journals" name="journal_ids" position="replace"/>
+            </data>
+            </field>
+        </record>
+
+        <record id="action_account_cashflow_report" model="ir.actions.act_window">
+             <field name="name">Cash Flow</field>
+             <field name="res_model">account.cashflow.report</field>
+             <field name="type">ir.actions.act_window</field>
+             <field name="view_type">form</field>
+             <field name="view_mode">form</field>
+             <field name="view_id" ref="account_cashflow_report_view"/>
+             <field name="target">new</field>
+       </record>
+       
+       <menuitem name="Cash FLow Report" 
+                 id="menu_cash_report" 
+                 parent="account.menu_finance_generic_reporting"/>
+                 
+       <menuitem icon="STOCK_PRINT"
+	             name="Cash Flow"
+	             action="action_account_cashflow_report"
+	             groups="account.group_account_user,account.group_account_manager"
+	             id="menu_account_cashflow_report"
+	             parent="account_cashflow.menu_cash_report"/>
+
+    </data>
+</openerp>

@@ -1,0 +1,80 @@
+# -*- encoding: utf-8 -*-
+##############################################################################
+#
+#    Copyright (C) 2010-TODAY Tech Receptives (<http://www.techreceptives.com>).
+#   
+#    Authors : Tech Receptives
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#   
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#   
+#    You should have received a copy of the GNU General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+##############################################################################
+
+from osv import osv, fields
+from tools.translate import _
+
+class account_cashflow_report(osv.osv_memory):
+    """
+    This wizard will provide the account cash flow report by periods, between any two dates.
+    """
+    _name = 'account.cashflow.report'
+    _inherit = "account.common.account.report"
+    _description = 'Account Cash Flow Report'
+
+#    def _get_def_reserve_account(self, cr, uid, context=None):
+#        chart_id = self._get_account(cr, uid, context=context)
+#        res = self.onchange_chart_id(cr, uid, [], chart_id, context=context)
+#        if not res:
+#            return False
+#        return res['value']['reserve_account_id']
+
+    _columns = {
+#        'display_type': fields.boolean("Landscape Mode"),
+#        'reserve_account_id': fields.many2one('account.account', 'Reserve & Profit/Loss Account',
+#                                      required=True,
+#                                      help='This Account is used for transfering Profit/Loss ' \
+#                                           '(Profit: Amount will be added, Loss: Amount will be deducted), ' \
+#                                           'which is calculated from Profit & Loss Report',
+#                                      domain = [('type','=','payable')]),
+    }
+
+    _defaults={
+#        'display_type': True,
+        'journal_ids': [],
+#        'reserve_account_id': _get_def_reserve_account,
+    }
+
+#    def onchange_chart_id(self, cr, uid, ids, chart_id, context=None):
+#        if not chart_id:
+#            return {}
+#        account = self.pool.get('account.account').browse(cr, uid, chart_id , context=context)
+#        if not account.company_id.property_reserve_and_surplus_account:
+#            return {'value': {'reserve_account_id': False}}
+#        return {'value': {'reserve_account_id': account.company_id.property_reserve_and_surplus_account.id}}
+
+
+    def _print_report(self, cr, uid, ids, data, context=None):
+        if context is None:
+            context = {}
+#        data['form'].update(self.read(cr, uid, ids, ['reserve_account_id'])[0])
+#        if not data['form']['reserve_account_id']:
+#            raise osv.except_osv(_('Warning'),_('Please define the Reserve and Profit/Loss account for current user company !'))
+        data = self.pre_print_report(cr, uid, ids, data, context=context)
+        return {
+            'type': 'ir.actions.report.xml',
+            'report_name': 'account.cashflow',
+            'datas': data,
+        }
+account_cashflow_report()
+
+# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
