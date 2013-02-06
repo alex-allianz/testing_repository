@@ -21,9 +21,9 @@
 ##############################################################################
 
 import time
-from osv import osv,fields
-from tools import config
-from tools.translate import _
+from openerp.osv import fields, osv
+from openerp.tools import config
+from openerp.tools.translate import _
 
 class account_account_type(osv.osv):
     

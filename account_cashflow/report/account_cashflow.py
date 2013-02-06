@@ -29,7 +29,6 @@ from account.report.common_report_header import common_report_header
 from tools.translate import _
 
 class report_account_cashflow_1(report_sxw.rml_parse, common_report_header):
-    
     def __init__(self, cr, uid, name, context=None):
         
         super(report_account_cashflow_1, self).__init__(cr, uid, name, context=context)
@@ -71,25 +70,22 @@ class report_account_cashflow_1(report_sxw.rml_parse, common_report_header):
         self.context = context
 
     def set_context(self, objects, data, ids, report_type=None):
-        
+       
         new_ids = ids
         if (data['model'] == 'ir.ui.menu'):
-        
+       
             new_ids = 'chart_account_id' in data['form'] and [data['form']['chart_account_id']] or []
             objects = self.pool.get('account.account').browse(self.cr, self.uid, new_ids)
-        
+       
         return super(report_account_cashflow_1, self).set_context(objects, data, new_ids, report_type=report_type)
 
     def _get_financing_balance(self):
-        
         return self.result_sum['financial']
 
     def _get_adjusted_operating_balance(self):
-        
         return self.result_sum['operating']
 
     def _get_investing_balance(self):
-        
         return self.result_sum['investing']
 
     def _get_operating_balance(self):
@@ -99,11 +95,9 @@ class report_account_cashflow_1(report_sxw.rml_parse, common_report_header):
         return operating_balance 
 
     def get_current_cash(self):
-        
         return self._get_operating_balance() + self.result_sum['financial'] + self.result_sum['investing'] + self.res_bl['balance']
 
     def get_pl_balance(self):
-        
         return self.res_bl['balance']
         
     def get_data(self,data):
@@ -138,7 +132,6 @@ class report_account_cashflow_1(report_sxw.rml_parse, common_report_header):
         
         ctx = self.context.copy()
         ctx['fiscalyear'] = data['form'].get('fiscalyear_id', False)
-
         if data['form']['filter'] == 'filter_period':
             ctx['period_from'] = data['form'].get('period_from', False)
             ctx['period_to'] =  data['form'].get('period_to', False)
@@ -146,7 +139,7 @@ class report_account_cashflow_1(report_sxw.rml_parse, common_report_header):
             ctx['date_from'] = data['form'].get('date_from', False)
             ctx['date_to'] =  data['form'].get('date_to', False)
         ctx['state'] = data['form'].get('target_move', 'all')
-         
+        
         account_dict = {}
         account_id = data['form'].get('chart_account_id', False)
         
@@ -175,7 +168,8 @@ class report_account_cashflow_1(report_sxw.rml_parse, common_report_header):
                                     'name': account.name,
                                     'level': account.level,
                                     'balance' : account.balance != 0.00 and account.balance * -1 or account.balance
-                                   }
+                                    }
+                    
                     self.result_sum[typ] += account_dict['balance']
                     accounts_temp.append(account_dict)
                 
@@ -183,15 +177,16 @@ class report_account_cashflow_1(report_sxw.rml_parse, common_report_header):
         return None
 
     def get_lines(self):
+        
         return self.result_temp
 
     def get_lines_another(self, group):
+        
         return self.result.get(group, [])
 
 report_sxw.report_sxw('report.account.cashflow.r', 'account.account',
                       'addons/account_cashflow/report/account_cashflow.rml',
-                       parser=report_account_cashflow_1,
-                       header='internal')
+                       parser=report_account_cashflow_1,header='internal')
     
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
