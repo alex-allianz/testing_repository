@@ -1,4 +1,4 @@
-# Turkish translation for openobject-addons
+# Italian translation for openobject-addons
 # Copyright (c) 2012 Rosetta Contributors and Canonical Ltd 2012
 # This file is distributed under the same license as the openobject-addons package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
@@ -8,9 +8,9 @@ msgstr ""
 "Project-Id-Version: openobject-addons\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-12-21 17:04+0000\n"
-"PO-Revision-Date: 2012-12-21 23:00+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: Turkish <tr@li.org>\n"
+"PO-Revision-Date: 2012-12-22 14:16+0000\n"
+"Last-Translator: Sergio Corato <Unknown>\n"
+"Language-Team: Italian <it@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -20,34 +20,34 @@ msgstr ""
 #. module: account_asset
 #: view:account.asset.asset:0
 msgid "Assets in draft and open states"
-msgstr "Taslak ve açık durumundaki Demirbaşlar"
+msgstr "Immobili in stato bozza e aperto"
 
 #. module: account_asset
 #: field:account.asset.category,method_end:0
 #: field:account.asset.history,method_end:0
 #: field:asset.modify,method_end:0
 msgid "Ending date"
-msgstr "Bitiş Tarihi"
+msgstr "Data finale"
 
 #. module: account_asset
 #: field:account.asset.asset,value_residual:0
 msgid "Residual Value"
-msgstr "Kalan Değer"
+msgstr "Valore residuo"
 
 #. module: account_asset
 #: field:account.asset.category,account_expense_depreciation_id:0
 msgid "Depr. Expense Account"
-msgstr "Amort. Gider Hesabı"
+msgstr "Conto Ammortamento"
 
 #. module: account_asset
 #: view:asset.asset.report:0
 msgid "Group By..."
-msgstr "Gruplandır..."
+msgstr "Raggruppa per..."
 
 #. module: account_asset
 #: field:asset.asset.report,gross_value:0
 msgid "Gross Amount"
-msgstr "Brüt Tutar"
+msgstr "Valore Iniziale"
 
 #. module: account_asset
 #: view:account.asset.asset:0
@@ -58,7 +58,7 @@ msgstr "Brüt Tutar"
 #: field:asset.asset.report,asset_id:0
 #: model:ir.model,name:account_asset.model_account_asset_asset
 msgid "Asset"
-msgstr "Demirbaş"
+msgstr "Immobilizzazione"
 
 #. module: account_asset
 #: help:account.asset.asset,prorata:0
@@ -67,14 +67,14 @@ msgid ""
 "Indicates that the first depreciation entry for this asset have to be done "
 "from the purchase date instead of the first January"
 msgstr ""
-"Bu demirbaş için ilk amortisman girişinin ilk Ocak ayı yerine alış "
-"tarihinden yapılmasını belirtiyor."
+"Indica che il primo ammortamento di questo immobile sarà calcolato dalla "
+"data di acquisto invece che dal primo Gennaio."
 
 #. module: account_asset
 #: selection:account.asset.asset,method:0
 #: selection:account.asset.category,method:0
 msgid "Linear"
-msgstr "Doğrusal"
+msgstr "Costante"
 
 #. module: account_asset
 #: field:account.asset.asset,company_id:0
@@ -82,24 +82,24 @@ msgstr "Doğrusal"
 #: view:asset.asset.report:0
 #: field:asset.asset.report,company_id:0
 msgid "Company"
-msgstr "Firma"
+msgstr "Azienda"
 
 #. module: account_asset
 #: view:asset.modify:0
 msgid "Modify"
-msgstr "Değiştir"
+msgstr "Modifica"
 
 #. module: account_asset
 #: selection:account.asset.asset,state:0
 #: view:asset.asset.report:0
 #: selection:asset.asset.report,state:0
 msgid "Running"
-msgstr "Çalışan"
+msgstr "In esecuzione"
 
 #. module: account_asset
 #: view:account.asset.asset:0
 msgid "Set to Draft"
-msgstr "Taslağa  Ayarla"
+msgstr "Imposta come Bozza"
 
 #. module: account_asset
 #: view:asset.asset.report:0
@@ -107,24 +107,24 @@ msgstr "Taslağa  Ayarla"
 #: model:ir.model,name:account_asset.model_asset_asset_report
 #: model:ir.ui.menu,name:account_asset.menu_action_asset_asset_report
 msgid "Assets Analysis"
-msgstr "Demirbaş Analizi"
+msgstr "Analisi Immobilizzazioni"
 
 #. module: account_asset
 #: field:asset.modify,name:0
 msgid "Reason"
-msgstr "Neden"
+msgstr "Causale"
 
 #. module: account_asset
 #: field:account.asset.asset,method_progress_factor:0
 #: field:account.asset.category,method_progress_factor:0
 msgid "Degressive Factor"
-msgstr "Azalma Faktörü"
+msgstr "Tasso Degressivo"
 
 #. module: account_asset
 #: model:ir.actions.act_window,name:account_asset.action_account_asset_asset_list_normal
 #: model:ir.ui.menu,name:account_asset.menu_action_account_asset_asset_list_normal
 msgid "Asset Categories"
-msgstr "Demirbaş Kategorileri"
+msgstr "Categorie Immobilizzazioni"
 
 #. module: account_asset
 #: view:account.asset.asset:0
@@ -132,40 +132,40 @@ msgstr "Demirbaş Kategorileri"
 #: field:account.move.line,entry_ids:0
 #: model:ir.actions.act_window,name:account_asset.act_entries_open
 msgid "Entries"
-msgstr "Girişler"
+msgstr "Registrazioni"
 
 #. module: account_asset
 #: view:account.asset.asset:0
 #: field:account.asset.asset,depreciation_line_ids:0
 msgid "Depreciation Lines"
-msgstr "Amortisman Kalemleri"
+msgstr "Righe Ammortamento"
 
 #. module: account_asset
 #: help:account.asset.asset,salvage_value:0
 msgid "It is the amount you plan to have that you cannot depreciate."
-msgstr "Bu amortisman düşemeyeceğinizi planladığınız tutardır."
+msgstr "E' l'ammontare che si prevede di non poter ammortizzare."
 
 #. module: account_asset
 #: help:account.asset.asset,method_period:0
 msgid "The amount of time between two depreciations, in months"
-msgstr ""
+msgstr "Il periodo tra due ammortamenti, in mesi"
 
 #. module: account_asset
 #: field:account.asset.depreciation.line,depreciation_date:0
 #: view:asset.asset.report:0
 #: field:asset.asset.report,depreciation_date:0
 msgid "Depreciation Date"
-msgstr "Amortisman Tarihi"
+msgstr "Data Ammortamento"
 
 #. module: account_asset
 #: constraint:account.asset.asset:0
 msgid "Error ! You cannot create recursive assets."
-msgstr ""
+msgstr "Errore ! Non è possibile creare immobilizzazioni ricorsive."
 
 #. module: account_asset
 #: field:asset.asset.report,posted_value:0
 msgid "Posted Amount"
-msgstr "İşlenmiş Tutar"
+msgstr "Importo Contabilizzato"
 
 #. module: account_asset
 #: view:account.asset.asset:0
@@ -175,12 +175,12 @@ msgstr "İşlenmiş Tutar"
 #: model:ir.ui.menu,name:account_asset.menu_finance_assets
 #: model:ir.ui.menu,name:account_asset.menu_finance_config_assets
 msgid "Assets"
-msgstr "Demirbaşlar"
+msgstr "Immobilizzazioni"
 
 #. module: account_asset
 #: field:account.asset.category,account_depreciation_id:0
 msgid "Depreciation Account"
-msgstr "Amortisman Hesabı"
+msgstr "F.do Ammortamento"
 
 #. module: account_asset
 #: view:account.asset.asset:0
@@ -189,28 +189,28 @@ msgstr "Amortisman Hesabı"
 #: view:asset.modify:0
 #: field:asset.modify,note:0
 msgid "Notes"
-msgstr "Notlar"
+msgstr "Note"
 
 #. module: account_asset
 #: field:account.asset.depreciation.line,move_id:0
 msgid "Depreciation Entry"
-msgstr "Amortisman Girişi"
+msgstr "Riga Ammortamento"
 
 #. module: account_asset
 #: view:asset.asset.report:0
 #: field:asset.asset.report,nbr:0
 msgid "# of Depreciation Lines"
-msgstr "Amortisman Satırı #"
+msgstr "# di Righe Ammortamento"
 
 #. module: account_asset
 #: field:account.asset.asset,method_period:0
 msgid "Number of Months in a Period"
-msgstr ""
+msgstr "Numero di Mesi in un Periodo"
 
 #. module: account_asset
 #: view:asset.asset.report:0
 msgid "Assets in draft state"
-msgstr "Taslak durumundaki Demirbaşlar"
+msgstr "Immobilizzazioni in stato \"bozza\""
 
 #. module: account_asset
 #: field:account.asset.asset,method_end:0
@@ -218,47 +218,47 @@ msgstr "Taslak durumundaki Demirbaşlar"
 #: selection:account.asset.category,method_time:0
 #: selection:account.asset.history,method_time:0
 msgid "Ending Date"
-msgstr "Bitiş Tarihi"
+msgstr "Data finale"
 
 #. module: account_asset
 #: field:account.asset.asset,code:0
 msgid "Reference"
-msgstr "İlgi"
+msgstr "Riferimento"
 
 #. module: account_asset
 #: view:account.asset.asset:0
 msgid "Account Asset"
-msgstr "Demirbaş Hesabı"
+msgstr "Conto Immobilizzazione"
 
 #. module: account_asset
 #: model:ir.actions.act_window,name:account_asset.action_asset_depreciation_confirmation_wizard
 #: model:ir.ui.menu,name:account_asset.menu_asset_depreciation_confirmation_wizard
 msgid "Compute Assets"
-msgstr "Demirbaş Hesapla"
+msgstr "Calcola Ammortamenti"
 
 #. module: account_asset
 #: field:account.asset.category,method_period:0
 #: field:account.asset.history,method_period:0
 #: field:asset.modify,method_period:0
 msgid "Period Length"
-msgstr "Dönem Uzunluğu"
+msgstr "Durata del Periodo"
 
 #. module: account_asset
 #: selection:account.asset.asset,state:0
 #: view:asset.asset.report:0
 #: selection:asset.asset.report,state:0
 msgid "Draft"
-msgstr "Taslak"
+msgstr "Bozza"
 
 #. module: account_asset
 #: view:asset.asset.report:0
 msgid "Date of asset purchase"
-msgstr "Demirbaşın satınalınma tarihi"
+msgstr "Data di acquisto dell'immobilizzazione"
 
 #. module: account_asset
 #: view:account.asset.asset:0
 msgid "Change Duration"
-msgstr "Süreyi Değiştir"
+msgstr "Modifica Durata"
 
 #. module: account_asset
 #: help:account.asset.asset,method_number:0
@@ -266,22 +266,23 @@ msgstr "Süreyi Değiştir"
 #: help:account.asset.history,method_number:0
 msgid "The number of depreciations needed to depreciate your asset"
 msgstr ""
+"Il numero di ammortamenti necessari per ammortizzare l'immobilizzazione"
 
 #. module: account_asset
 #: view:account.asset.category:0
 msgid "Analytic Information"
-msgstr ""
+msgstr "Informazioni Analitiche"
 
 #. module: account_asset
 #: field:account.asset.category,account_analytic_id:0
 msgid "Analytic account"
-msgstr "Analiz Hesabı"
+msgstr "Conto analitico"
 
 #. module: account_asset
 #: field:account.asset.asset,method:0
 #: field:account.asset.category,method:0
 msgid "Computation Method"
-msgstr "Hesaplama Yöntemi"
+msgstr "Metodo di calcolo"
 
 #. module: account_asset
 #: constraint:account.asset.asset:0
@@ -289,29 +290,30 @@ msgid ""
 "Prorata temporis can be applied only for time method \"number of "
 "depreciations\"."
 msgstr ""
-"Kısmi süreyle orantı yalnızca süre yöntemine \"amortisman sayısı\" uygulanır."
+"Prorata temporis può essere applicato solo per il metodo temporale \"numero "
+"di ammortamenti\"."
 
 #. module: account_asset
 #: field:account.asset.depreciation.line,remaining_value:0
 msgid "Next Period Depreciation"
-msgstr ""
+msgstr "Prossimo Periodo di Ammortamento"
 
 #. module: account_asset
 #: help:account.asset.history,method_period:0
 msgid "Time in month between two depreciations"
-msgstr "İki amortisman arasındaki zaman, ay olarak"
+msgstr "Tempo in mesi tra due ammortamenti"
 
 #. module: account_asset
 #: view:asset.modify:0
 #: model:ir.actions.act_window,name:account_asset.action_asset_modify
 #: model:ir.model,name:account_asset.model_asset_modify
 msgid "Modify Asset"
-msgstr "Demirbaş Değiştir"
+msgstr "Modifica Immobilizzazione"
 
 #. module: account_asset
 #: field:account.asset.asset,salvage_value:0
 msgid "Salvage Value"
-msgstr "Hurda Değeri"
+msgstr "Valore di Realizzo"
 
 #. module: account_asset
 #: field:account.asset.asset,category_id:0
@@ -319,68 +321,68 @@ msgstr "Hurda Değeri"
 #: field:account.invoice.line,asset_category_id:0
 #: view:asset.asset.report:0
 msgid "Asset Category"
-msgstr "Demirbaş Kategorisi"
+msgstr "Categoria Immobilizzazione"
 
 #. module: account_asset
 #: view:account.asset.asset:0
 msgid "Assets in closed state"
-msgstr "Kapalı durumdaki Demirbaşlar"
+msgstr "Immobilizzazioni in stato \"chiuso\""
 
 #. module: account_asset
 #: field:account.asset.asset,parent_id:0
 msgid "Parent Asset"
-msgstr "Ana Demirbaş"
+msgstr "Immobilizzazione Padre"
 
 #. module: account_asset
 #: view:account.asset.history:0
 #: model:ir.model,name:account_asset.model_account_asset_history
 msgid "Asset history"
-msgstr "Demirbaş geçmişi"
+msgstr "Storico immobilizzazione"
 
 #. module: account_asset
 #: view:account.asset.category:0
 msgid "Search Asset Category"
-msgstr "Demirbaş Kategorisi Ara"
+msgstr "Ricerca Categoria Immobilizzazioni"
 
 #. module: account_asset
 #: view:asset.modify:0
 msgid "months"
-msgstr ""
+msgstr "mesi"
 
 #. module: account_asset
 #: model:ir.model,name:account_asset.model_account_invoice_line
 msgid "Invoice Line"
-msgstr "Fatura Satırı"
+msgstr "Riga fattura"
 
 #. module: account_asset
 #: view:account.asset.asset:0
 msgid "Depreciation Board"
-msgstr "Amortisman Tablosu"
+msgstr "Piano d'Ammortamento"
 
 #. module: account_asset
 #: field:asset.asset.report,unposted_value:0
 msgid "Unposted Amount"
-msgstr "İşlenmemiş Tutar"
+msgstr "Importi Non Pubblicati"
 
 #. module: account_asset
 #: field:account.asset.asset,method_time:0
 #: field:account.asset.category,method_time:0
 #: field:account.asset.history,method_time:0
 msgid "Time Method"
-msgstr "Zaman Yöntemi"
+msgstr "Metodo Temporale"
 
 #. module: account_asset
 #: view:asset.depreciation.confirmation.wizard:0
 #: view:asset.modify:0
 msgid "or"
-msgstr ""
+msgstr "o"
 
 #. module: account_asset
 #: field:account.asset.asset,note:0
 #: field:account.asset.category,note:0
 #: field:account.asset.history,note:0
 msgid "Note"
-msgstr "Not"
+msgstr "Nota"
 
 #. module: account_asset
 #: help:account.asset.history,method_time:0
@@ -391,11 +393,12 @@ msgid ""
 "Ending Date: Choose the time between 2 depreciations and the date the "
 "depreciations won't go beyond."
 msgstr ""
-"Tarihlerin ve amortisman satırlarının hesaplamasında kullanılan yöntem.\n"
-"Amortisman Sayısı: 2 Amortisman arasındakiamortisman satırı sayısını ve "
-"süresini sabitleyin .\n"
-"Bitiş Tarihi: Amortismanın daha öteye gidemeyeceği 2 amortisman arasındaki "
-"süreyi ve tarihi seçin."
+"Il metodo da usare per calcolare le date e il numero delle righe di "
+"ammortamento.\n"
+"Numero di Ammortamenti: Indicare il numero delle righe di ammortamento e il "
+"periodo da 2 ammortamenti.\n"
+"Data Finale: Scegliere il periodo tra 2 ammortamenti e la data che gli "
+"ammortamenti non dovranno superare."
 
 #. module: account_asset
 #: help:account.asset.asset,method_time:0
@@ -408,22 +411,22 @@ msgid ""
 "  * Ending Date: Choose the time between 2 depreciations and the date the "
 "depreciations won't go beyond."
 msgstr ""
-"Amortisman tarihlerini ve satırlarını hesaplamakta kullanılacak yöntemi "
-"seçin.\n"
-"  * Amortisman Sayısı: 2 Amortisman arasındaki amortisman satır sayısını "
-"sabitleyin.\n"
-"  * Bitiş Tarihi: 2 Amortisman arasındaki ,amortismanın daha ileriye "
-"gidemeyeceği süreyi ve tarihi seçin."
+"Selezionare il metodo da usare per calcolare le date e il numero degli "
+"ammortamenti.\n"
+"  *Numero degli Ammortamenti: Inserire il numero delle righe di ammortamento "
+"e il periodo tra 2 ammortamenti.\n"
+"  *Data Finale: Selezionare il periodo tra 2 ammortamenti e la data che gli "
+"ammortamenti non dovranno superare."
 
 #. module: account_asset
 #: view:asset.asset.report:0
 msgid "Assets in running state"
-msgstr "Çalışır durumdaki Demirbaşlar"
+msgstr "Immobilizzazioni attive"
 
 #. module: account_asset
 #: view:account.asset.asset:0
 msgid "Closed"
-msgstr "Kapalı"
+msgstr "Chiuso"
 
 #. module: account_asset
 #: help:account.asset.asset,state:0
@@ -434,151 +437,157 @@ msgid ""
 "You can manually close an asset when the depreciation is over. If the last "
 "line of depreciation is posted, the asset automatically goes in that status."
 msgstr ""
+"Quando un'immobilizzazione è creata, lo stato è 'Bozza'.\n"
+"Se l'immobilizzazione è confermata, lo stato diventa 'Attivo' e le righe di "
+"ammortamento possono essere pubblicate in contabilità.\n"
+"E' possibile chiudere manualmente un'immobilizzazione quando l'ammortamento "
+"è completato. Se l'ultima riga di ammortamento è pubblicata, "
+"l'immobilizzazione automaticamente va in quello stato."
 
 #. module: account_asset
 #: field:account.asset.asset,state:0
 #: field:asset.asset.report,state:0
 msgid "Status"
-msgstr ""
+msgstr "Stato"
 
 #. module: account_asset
 #: field:account.asset.asset,partner_id:0
 #: field:asset.asset.report,partner_id:0
 msgid "Partner"
-msgstr "Paydaş"
+msgstr "Partner"
 
 #. module: account_asset
 #: view:asset.asset.report:0
 msgid "Posted depreciation lines"
-msgstr "İşlenmiş amortisman satırları"
+msgstr "Righe di ammortamento emesse"
 
 #. module: account_asset
 #: field:account.asset.asset,child_ids:0
 msgid "Children Assets"
-msgstr "Alt Demirbaşlar"
+msgstr "Immobilizzazioni figlie"
 
 #. module: account_asset
 #: view:asset.asset.report:0
 msgid "Date of depreciation"
-msgstr "Amortisman Tarihi"
+msgstr "Data di ammortamento"
 
 #. module: account_asset
 #: field:account.asset.history,user_id:0
 msgid "User"
-msgstr "Kullanıcı"
+msgstr "Utente"
 
 #. module: account_asset
 #: field:account.asset.category,account_asset_id:0
 msgid "Asset Account"
-msgstr "Demirbaş Hesabı"
+msgstr "Conto Immo bilizzazione"
 
 #. module: account_asset
 #: view:asset.asset.report:0
 msgid "Extended Filters..."
-msgstr "Genişletilmiş Süzgeçler..."
+msgstr "Filtri Estesi..."
 
 #. module: account_asset
 #: view:account.asset.asset:0
 #: view:asset.depreciation.confirmation.wizard:0
 msgid "Compute"
-msgstr "Hesapla"
+msgstr "Calcola"
 
 #. module: account_asset
 #: view:account.asset.history:0
 msgid "Asset History"
-msgstr ""
+msgstr "Storico Immobilizzazione"
 
 #. module: account_asset
 #: model:ir.model,name:account_asset.model_asset_depreciation_confirmation_wizard
 msgid "asset.depreciation.confirmation.wizard"
-msgstr "demirbas.amortisman.onaylama.sihirbaz"
+msgstr "asset.depreciation.confirmation.wizard"
 
 #. module: account_asset
 #: field:account.asset.asset,active:0
 msgid "Active"
-msgstr "Etkin"
+msgstr "Attivo"
 
 #. module: account_asset
 #: field:account.asset.depreciation.line,parent_state:0
 msgid "State of Asset"
-msgstr "Demirbaş Durumu"
+msgstr "Stato dell'Immobilizzazione"
 
 #. module: account_asset
 #: field:account.asset.depreciation.line,name:0
 msgid "Depreciation Name"
-msgstr "Amortisman Adı"
+msgstr "Nome Ammortamento"
 
 #. module: account_asset
 #: view:account.asset.asset:0
 #: field:account.asset.asset,history_ids:0
 msgid "History"
-msgstr "Geçmiş"
+msgstr "Storico"
 
 #. module: account_asset
 #: view:asset.depreciation.confirmation.wizard:0
 msgid "Compute Asset"
-msgstr "Demirbaş Hesapla"
+msgstr "Calcola Ammortamenti"
 
 #. module: account_asset
 #: field:asset.depreciation.confirmation.wizard,period_id:0
 msgid "Period"
-msgstr "Dönem"
+msgstr "Periodo"
 
 #. module: account_asset
 #: view:account.asset.asset:0
 msgid "General"
-msgstr "Genel"
+msgstr "Generale"
 
 #. module: account_asset
 #: field:account.asset.asset,prorata:0
 #: field:account.asset.category,prorata:0
 msgid "Prorata Temporis"
-msgstr "Kısmi Süreyle Orantılı"
+msgstr "Prorata Temporis"
 
 #. module: account_asset
 #: model:ir.model,name:account_asset.model_account_invoice
 msgid "Invoice"
-msgstr "Fatura"
+msgstr "Fattura"
 
 #. module: account_asset
 #: view:account.asset.asset:0
 msgid "Set to Close"
-msgstr "Kapalıya ayarla"
+msgstr "Imposta a Chiuso"
 
 #. module: account_asset
 #: view:asset.depreciation.confirmation.wizard:0
 #: view:asset.modify:0
 msgid "Cancel"
-msgstr "Vazgeç"
+msgstr "Annulla"
 
 #. module: account_asset
 #: selection:account.asset.asset,state:0
 #: selection:asset.asset.report,state:0
 msgid "Close"
-msgstr "Kapat"
+msgstr "Chiudi"
 
 #. module: account_asset
 #: model:ir.model,name:account_asset.model_account_move_line
 msgid "Journal Items"
-msgstr "Günlük MAddeleri"
+msgstr "Voci Sezionale"
 
 #. module: account_asset
 #: view:asset.modify:0
 msgid "Asset Durations to Modify"
-msgstr ""
+msgstr "Durate Immobilizzazione da Modificare"
 
 #. module: account_asset
 #: field:account.asset.asset,purchase_date:0
 #: view:asset.asset.report:0
 #: field:asset.asset.report,purchase_date:0
 msgid "Purchase Date"
-msgstr "Satınalma Tarihi"
+msgstr "Data di Acquisto"
 
 #. module: account_asset
 #: selection:account.asset.asset,method:0
 #: selection:account.asset.category,method:0
 msgid "Degressive"
-msgstr "Azalan"
+msgstr "Regressivo"
 
 #. module: account_asset
 #: help:asset.depreciation.confirmation.wizard,period_id:0
@@ -586,58 +595,58 @@ msgid ""
 "Choose the period for which you want to automatically post the depreciation "
 "lines of running assets"
 msgstr ""
-"Çalışan demirbaşların amortisman satırlarının otomatikmen işlenmesini "
-"istediğiniz dönemi seçin"
+"Selezionare il periodo per il quale saranno create automaticamente le righe "
+"d'ammortamento delle immobilizzazioni attive."
 
 #. module: account_asset
 #: view:account.asset.asset:0
 msgid "Current"
-msgstr "Geçerli"
+msgstr "Attivi"
 
 #. module: account_asset
 #: view:account.asset.category:0
 msgid "Depreciation Method"
-msgstr "Amortisman Yöntemi"
+msgstr "Metodo Ammortamento"
 
 #. module: account_asset
 #: field:account.asset.depreciation.line,amount:0
 msgid "Current Depreciation"
-msgstr ""
+msgstr "Ammortamento Corrente"
 
 #. module: account_asset
 #: field:account.asset.asset,name:0
 msgid "Asset Name"
-msgstr ""
+msgstr "Nome Immobilizzazione"
 
 #. module: account_asset
 #: field:account.asset.category,open_asset:0
 msgid "Skip Draft State"
-msgstr "Taslak Durumu Atla"
+msgstr "Salta lo Stato Bozza"
 
 #. module: account_asset
 #: view:account.asset.category:0
 msgid "Depreciation Dates"
-msgstr "Amortisman Tarihleri"
+msgstr "Date Ammortamento"
 
 #. module: account_asset
 #: field:account.asset.asset,currency_id:0
 msgid "Currency"
-msgstr "Para Birimi"
+msgstr "Valuta"
 
 #. module: account_asset
 #: field:account.asset.category,journal_id:0
 msgid "Journal"
-msgstr "Günlük"
+msgstr "Sezionale"
 
 #. module: account_asset
 #: field:account.asset.history,name:0
 msgid "History name"
-msgstr "Geçmiş adı"
+msgstr "Nome Storico"
 
 #. module: account_asset
 #: field:account.asset.depreciation.line,depreciated_value:0
 msgid "Amount Already Depreciated"
-msgstr "Halihazırda Düşülmüş Değer Tutarı"
+msgstr "Importo Già Ammortizzato"
 
 #. module: account_asset
 #: help:account.asset.asset,method:0
@@ -647,13 +656,18 @@ msgid ""
 "  * Linear: Calculated on basis of: Gross Value / Number of Depreciations\n"
 "  * Degressive: Calculated on basis of: Residual Value * Degressive Factor"
 msgstr ""
+"Scegliere il metodo da usare per calcolare la somma delle righe di "
+"ammortamento.\n"
+"  *Lineare: Calcolato sulla base di: Valore Iniziale / Numero di "
+"Ammortamenti\n"
+"  *Regressivo: Calcolato sulla base di: Valore Residuo * Tasso Regressivo"
 
 #. module: account_asset
 #: field:account.asset.depreciation.line,move_check:0
 #: view:asset.asset.report:0
 #: field:asset.asset.report,move_check:0
 msgid "Posted"
-msgstr "İşlenmiş"
+msgstr "Pubblicato"
 
 #. module: account_asset
 #: model:ir.actions.act_window,help:account_asset.action_asset_asset_report
@@ -667,16 +681,24 @@ msgid ""
 "          </p>\n"
 "        "
 msgstr ""
+"<p>\n"
+"            Da questo report, è possibile avere una panoramica di tutti gli "
+"ammortamenti. Lo\n"
+"            strumento ricerca può anche essere usato per personalizzare i "
+"report delle Immo-\n"
+"            bilizzazioni, così da soddisfare le proprie necessità;\n"
+"          </p>\n"
+"        "
 
 #. module: account_asset
 #: field:account.asset.asset,purchase_value:0
 msgid "Gross Value"
-msgstr ""
+msgstr "Valore Iniziale"
 
 #. module: account_asset
 #: field:account.asset.category,name:0
 msgid "Name"
-msgstr "Adı"
+msgstr "Nome"
 
 #. module: account_asset
 #: help:account.asset.category,open_asset:0
@@ -684,52 +706,52 @@ msgid ""
 "Check this if you want to automatically confirm the assets of this category "
 "when created by invoices."
 msgstr ""
-"Faturalar oluşturulurken bu kategorideki demirbaşların otomatikmen "
-"onaylanmasını istiyorsanız bunu işaretleyin."
+"Selezionare per confermare automaticamento le immobilizzazioni di questa "
+"categoria quando create dalle fatture."
 
 #. module: account_asset
 #: field:asset.asset.report,name:0
 msgid "Year"
-msgstr "Yıl"
+msgstr "Anno"
 
 #. module: account_asset
 #: model:ir.model,name:account_asset.model_account_asset_depreciation_line
 msgid "Asset depreciation line"
-msgstr "Demirbaş amortisman satırı"
+msgstr "Riga ammortamento immobilizzazione"
 
 #. module: account_asset
 #: view:account.asset.category:0
 #: field:asset.asset.report,asset_category_id:0
 #: model:ir.model,name:account_asset.model_account_asset_category
 msgid "Asset category"
-msgstr "Demirbaş Kategorisi"
+msgstr "Categoria immobilizzazione"
 
 #. module: account_asset
 #: view:asset.asset.report:0
 #: field:asset.asset.report,depreciation_value:0
 msgid "Amount of Depreciation Lines"
-msgstr "Amortisman Satırları Tutarı"
+msgstr "Importo delle Righe d'Ammortamento"
 
 #. module: account_asset
 #: code:addons/account_asset/wizard/wizard_asset_compute.py:49
 #, python-format
 msgid "Created Asset Moves"
-msgstr "Oluşturulan Demirbaş Hareketleri"
+msgstr "Movimenti Immobilizzazioni Creati"
 
 #. module: account_asset
 #: field:account.asset.depreciation.line,sequence:0
 msgid "Sequence"
-msgstr ""
+msgstr "Sequenza"
 
 #. module: account_asset
 #: help:account.asset.category,method_period:0
 msgid "State here the time between 2 depreciations, in months"
-msgstr "Burada, ay olarak, 2 amortisman arasındaki süreyi belirtin"
+msgstr "Indicare il periodo tra 2 ammortamenti, in mesi"
 
 #. module: account_asset
 #: field:account.asset.history,date:0
 msgid "Date"
-msgstr "Tarih"
+msgstr "Data"
 
 #. module: account_asset
 #: field:account.asset.asset,method_number:0
@@ -740,20 +762,20 @@ msgstr "Tarih"
 #: selection:account.asset.history,method_time:0
 #: field:asset.modify,method_number:0
 msgid "Number of Depreciations"
-msgstr "Amortisman Sayısı"
+msgstr "Numero di Ammortamenti"
 
 #. module: account_asset
 #: view:account.asset.asset:0
 msgid "Create Move"
-msgstr "Hareket Oluştur"
+msgstr "Crea Movimento"
 
 #. module: account_asset
 #: view:account.asset.asset:0
 msgid "Confirm Asset"
-msgstr "Demirbaş Onayla"
+msgstr "Conferma Immobilizzazione"
 
 #. module: account_asset
 #: model:ir.actions.act_window,name:account_asset.action_account_asset_asset_tree
 #: model:ir.ui.menu,name:account_asset.menu_action_account_asset_asset_tree
 msgid "Asset Hierarchy"
-msgstr "Demirbaş Sıradüzeni"
+msgstr "Gerarchia Immobilizzazioni"

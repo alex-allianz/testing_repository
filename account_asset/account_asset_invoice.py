@@ -2,7 +2,7 @@
 ##############################################################################
 #
 #    OpenERP, Open Source Management Solution
-#    Copyright (C) 2012 Allianz Technology (Modified Version of Account_Asset Module (Copyright (C) 2004-2010 Tiny SPRL)).
+#    Copyright (C) 2004-2010 Tiny SPRL (<http://tiny.be>).
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -19,7 +19,7 @@
 #
 ##############################################################################
 
-from osv import osv, fields
+from openerp.osv import fields, osv
 
 class account_invoice(osv.osv):
 
@@ -57,6 +57,7 @@ class account_invoice_line(osv.osv):
                     'partner_id': line.invoice_id.partner_id.id,
                     'company_id': line.invoice_id.company_id.id,
                     'currency_id': line.invoice_id.currency_id.id,
+                    'purchase_date' : line.invoice_id.date_invoice,
                 }
                 changed_vals = asset_obj.onchange_category_id(cr, uid, [], vals['category_id'], context=context)
                 vals.update(changed_vals['value'])
