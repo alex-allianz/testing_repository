@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        
+        <report 
+            auto="False"
+            id="check_report" 
+            menu="True"
+            model="check.report"
+            name="checks.printed"
+            rml="account_check_report/report/account_check_report.rml" 
+            string="List of Checks Issued"
+            header="False"/>
+    
+    </data>
+</openerp>
