@@ -19,17 +19,17 @@
 ##############################################################################
 {
     'name': 'Add-on for Check Writing Module',
-    'version': '1.2',
+    'version': '1.3',
     'category': 'Accounting',
     'description': """This extension module improves the functionality of the Check Writing Module (account_check_writing).""",
     'author': 'Allianz Technology',
     'website': 'www.allianztechnology.com',
-    'depends': ['account_check_writing', 'purchase'],
+    'depends': ['account_check_writing', 'purchase','valoran_base'],
     'init_xml': [],
     'update_xml': [
                    'account_check_writing_report.xml',
-                   'account_voucher_view.xml',
                    'wizard/check_print_view.xml',
+                   'account_voucher_view.xml',
                    'res_currency_view.xml',
                    'account_invoice_view.xml',
                    'account_journal_view.xml',
@@ -38,6 +38,5 @@
     'test': [],
     'installable': True,
     'active': False,
-    'certificate': '',
 }
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

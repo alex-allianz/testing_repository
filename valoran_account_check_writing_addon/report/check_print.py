@@ -94,7 +94,7 @@ class report_print_check_add(report_print_check):
 report_sxw.report_sxw(
                       'report.account.print.check.top1',
                       'account.voucher',
-                      'addons/account_check_writing_addon/report/check_print_top.rml',
+                      'addons/valoran_account_check_writing_addon/report/check_print_top.rml',
                       parser=report_print_check_add, header=False)
 
 report_sxw.report_sxw(

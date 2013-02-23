@@ -5,7 +5,7 @@
             string="Print Check (Top)"
             model="account.voucher"
             name="account.print.check.top1"
-            rml="account_check_writing_addon/report/check_print_top.rml"
+            rml="valoran_account_check_writing_addon/report/check_print_top.rml"
             multi="True"
             auto="False"/>
 

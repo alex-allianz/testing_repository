@@ -1,6 +1,13 @@
 ==================================================================================
- Version ChangeLog (account_check_writing_addon)
+ Version ChangeLog (valoran_account_check_writing_addon)
 ==================================================================================
+1.3  --> 22 February 2013 : Serpent Consulting Services
+		* renamed module account_check_writing_addon ==> valoran_account_check_writing_addon
+		* renamed module name into check_print.py
+		* renamed module name into account_check_writing_report.xml
+		* renamed module name into account_invoice_view.xml
+		* Add base module valoran_base into __openerp__.py
+		
 1.2  --> 1 February 2013 Allianz Technology:
 		* Removed "print_check" button from account.voucher
 		* Improved the layout of various forms
