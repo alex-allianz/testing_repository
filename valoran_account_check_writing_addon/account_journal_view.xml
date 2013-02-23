@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<openerp>
+    <data>
+    	<record model="ir.ui.view"
+			id="account_check_writing_extended_form_view">
+			<field name="name">account.check.writing.extended.form</field>
+			<field name="model">account.journal</field>
+			<field name="type">form</field>
+			<field name="inherit_id" ref="account.view_account_journal_form" />
+			<field name="arch" type="xml">
+<!--				<xpath expr="/form/notebook/page[@string='General Information']/group/separator[@string='Sequence']/field[@name='sequence_id']" position="after">-->
+<!--					<field name="check_sequence_id" />-->
+<!--				</xpath>-->
+				<xpath expr="/form/group[@colspan=4]/field[@name='type']" position="after">
+					<field name="check_sequence_id" />
+				</xpath>
+
+			</field>
+		</record>
+		
+			<!-- Check Log -->
+
+	   <record id="check_log_filter" model="ir.ui.view">
+	       <field name="name">check.log.select</field>
+	       <field name="model">check.log</field>
+	       <field name="type">search</field>
+	       <field name="arch" type="xml">
+	           <search string="Search Log">
+
+                   <group col='15' colspan='4'>
+                       <field name="name"/>
+                       <field name="status"/>
+                       <field name="check_no"  />
+                       <field name="cleared"/>
+                   </group><newline/>
+	               <group expand="0" string="Group By...">
+	                   <filter string="Supplier Payment"  domain="[]" context="{'group_by':'name'}"/>
+	                   <filter string="Status" icon="terp-partner" domain="[]" context="{'group_by':'status'}"/>
+	                   <filter string="Cleared" icon="terp-partner" domain="[]" context="{'group_by':'cleared'}"/>
+	               </group>
+	          </search>
+	       </field>
+	   </record>
+
+
+		<record model="ir.ui.view" id="check_log_form">
+			<field name="name">check.log.form</field>
+			<field name="model">check.log</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Check Log">
+					<field name="name" select="1" readonly="1"></field>
+					<field name="status" select="1" readonly="1"></field>
+					<field name="check_no" select="1" readonly="1"></field>
+					<field name="cleared"/>
+				</form>
+			</field>
+		</record>
+		<record model="ir.ui.view" id="check_log_tree">
+			<field name="name">check.log.tree</field>
+			<field name="model">check.log</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string='Check Log' editable="top">
+					<field name="cleared"/>
+					<field name="check_no" readonly="1"></field>
+					<field name="name" readonly="1"></field>
+					<field name="status" readonly="1"></field>
+				</tree>
+			</field>
+		</record>
+        <record id="action_check_log" model="ir.actions.act_window">
+            <field name="name">Check Log</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">check.log</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="check_log_filter"/>
+            <field name="view_id" ref="check_log_tree"/>
+        </record>
+
+		<menuitem name="Check Log" id="menu_check_log" action="action_check_log" parent="account.menu_finance_reporting" sequence="360"/>
+		
+    
+    </data>
+</openerp>

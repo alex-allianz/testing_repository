@@ -1,0 +1,19 @@
+==================================================================================
+ Version ChangeLog (account_check_writing_addon)
+==================================================================================
+1.2  --> 1 February 2013 Allianz Technology:
+		* Removed "print_check" button from account.voucher
+		* Improved the layout of various forms
+		* Changed the wording/explanation of various fields.
+		* Ensured that print_check_top.rml of this module gets printed instead of original .rml
+		
+1.1  --> Serpent Consulting Services
+		* Added various features of the 6.0 account_check_writing Module
+
+1.0  --> 22 January 2013 : Allianz Technology
+		* Replaces the words "euro" with "Dollars" in the amount_to_text field of the Pay Invoice screen and check. 
+		* It pulls the value (Supplier's Invoice #) of the "Free Reference" field of the Supplier Invoice. 
+		   - This field now reads "Supplier's Invoice #:
+		   - It becomes a read-only field upon approving the Supplier Invoice
+		* Replaces the original check_print_top.rml with its improved version, which provides a better printing layout.
+			- Only the Invoice(s) paid with the check get displayed in the lower portions of the printout.

@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+        <!-- View of wizard to print check -->
+        <record id="view_print_check" model="ir.ui.view">
+            <field name="name">Print Check</field>
+            <field name="model">print.check</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Print Checks" >
+                
+           		<field name="state" invisible="1"/>
+	                <group attrs="{'invisible':[('state','not in',['print', 'do_update'])]}">
+				        <field name="nxt_seq" readonly="1"/>
+				        <field name="new_no"/>
+				        <newline/>         
+					</group>  
+				        <field name="preprint_msg" colspan="12" height="60" nolabel="1" readonly="1" /><newline/>
+	                <group attrs="{'invisible':[('state','not in',['print', 'do_update'])]}">
+	                    <button special="cancel" string="Cancel" icon="gtk-cancel"/>  
+	                    <button name="print_check" string="OK" type="object" icon="gtk-ok"/>           
+					</group>  
+					  
+	                <group attrs="{'invisible':[('state','not in',['printed','printed_reprint'])]}" >
+		                <group colspan="2">
+		                	<field name='print_new' on_change="onchange_chkbx(print_new, 'print_new')"/>
+		                	<field name='update_check_no' on_change="onchange_chkbx(update_check_no, 'update_check_no')"/>	
+		                </group>
+		                <newline/>
+		                <field name='reprint' on_change="onchange_chkbx(reprint, 'reprint')"  attrs="{'invisible':[('state','=','printed')]}"/>
+	                    <button special="cancel" string="Cancel" icon="gtk-cancel"/> 
+	                    <button name="check_option" string="OK" type="object" icon="gtk-ok"/>            
+					</group>    
+	                <group attrs="{'invisible':[('state','not in',['reprint_new','update_check_no'])]}">
+					   	<group colspan="2">
+					    	<field name="status" attrs="{'required':[('state','in',['reprint_new','update_check_no'])]}"/>
+					    </group>
+					    <newline/>
+	                    <button special="cancel" string="Cancel" icon="gtk-cancel"/>  
+	                    <button name="print_new" string="Next" type="object" icon="gtk-ok" attrs="{'invisible':[('state','not in',['reprint_new'])]}" context="context"/>  
+	                    <button name="update_no" string="Update" type="object" icon="gtk-ok" attrs="{'invisible':[('state','not in',['update_check_no'])]}"/>           
+					</group>    
+				</form>
+            </field>
+        </record>
+        
+		<act_window name="Print Checks in Batch"
+		        res_model="print.check"        
+		        src_model="account.voucher"
+		        view_mode="form"
+		        view_type="form"
+		        view_id="view_print_check"
+            	key2="client_action_multi"    
+            	multi="True"
+		        target="new"
+		        id="print_check_act_window"/>
+        
+    </data>
+</openerp>
+        
